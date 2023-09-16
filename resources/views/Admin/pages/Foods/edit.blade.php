@@ -21,12 +21,15 @@
                 <div class="card-body">
                     <h4 class="card-title">Create your Food</h4>
                     <p class="card-description"> Sadra Restaurant Foods </p>
-                    <form class="forms-sample" action="{{ route('food-store') }}" method="post">
+                    <form class="forms-sample" action="{{ route('food-update', $food->id) }}" method="post">
+                        @method('PATCH')
+                        @csrf
                         <div class="form-group">
                             <label for="draft">Status</label>
                             <select class="form-control" name="draft" id="draft">
-                                <option value="0" {{ $food->draft === 0? 'checked': '' }}>publish</option>
-                                <option value="1" {{ $food->draft === 1 ? 'checked': '' }}>Draft</option>
+
+                                <option value="0" {{ $food->draft ? 'selected': '' }}>publish</option>
+                                <option value="1" {{ !$food->draft ? 'selected': '' }}>Draft</option>
                             </select>
                             @error('draft')
                             <small class="text text-danger">{{ $message }}</small>
@@ -48,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label for="food_types">Category</label>
-                            <select name="food_types" id="food_types" class="dropdown" multiple>
+                            <select name="food_types[]" id="food_types" class="dropdown" multiple>
                                 @foreach($food_types as $type)
                                     <option value="{{ $type->id }}" {{ in_array($type->id, $food_types_ids) ? 'selected': '' }}>{{ $type->type_title }}</option>
                                 @endforeach
@@ -56,7 +59,9 @@
                         </div>
                         <div class="form-check form-group row form-check-primary">
                             <label for="need_age_check" class="form-check-label">
-                                <input type="checkbox" name="need_age_check" class="form-check-input" id="need_age_check" {{ $food->need_age_check == true ? 'check' : '' }}/>
+                                <input type="checkbox" name="need_age_check"
+                                       class="form-check-input" id="need_age_check"
+                                        {{ $food->need_age_check == true ? 'checked' : '' }}/>
                                 Age Limitation</label>
                             @error('need_age_check')
                             <small class="text text-danger">{{ $message }}</small>
@@ -77,7 +82,6 @@
                                 <small class="text text-danger">{{ $message }}</small>
                                 @enderror
                         </div>
-                        @csrf
                         <input type="submit" class="btn btn-primary mr-2" value="Submit"/>
                     </form>
                 </div>

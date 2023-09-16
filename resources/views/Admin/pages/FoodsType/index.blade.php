@@ -5,6 +5,9 @@
         @include('Admin.layouts.notify')
     @endif
     <div class="row">
+        @if(isset($notify))
+            @include("Admin.layouts.notify")
+        @endif
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body p-4">

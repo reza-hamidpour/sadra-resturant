@@ -18,7 +18,7 @@ class CreateFoodsFoodType extends Migration
             $table->unsignedBigInteger('foods_id')->index();
             $table->foreign('foods_id')->references('id')->on('foods')->onDelete('cascade');
             $table->unsignedBigInteger('food_types_id')->index();
-            $table->foreign('food_types_id')->references('id')->on('food_types')->onDelete('cascade');
+            $table->foreign('food_types_id')->references('id')->on('foods_types')->onDelete('cascade');
             $table->timestamps();
         });
     }

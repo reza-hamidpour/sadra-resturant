@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Foods_type extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
 
     public function foods(){
-        return $this->hasMany(Foods::class);
+        return $this->belongsToMany(Foods::class, 'foods_food_type',
+                              'food_types_id', 'food_id');
     }
 
 }

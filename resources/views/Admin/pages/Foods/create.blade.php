@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label for="food_types">Category</label>
-                            <select name="food_types" id="food_types" class="dropdown" multiple>
+                            <select name="food_types[]" id="food_types" class="dropdown" multiple>
                                 @foreach($food_types as $type)
                                     <option value="{{ $type->id }}">{{ $type->type_title }}</option>
                                 @endforeach

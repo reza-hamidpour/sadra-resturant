@@ -19,7 +19,7 @@ class Foods extends Model
 
     public function food_types()
     {
-        return $this->belongsToMany(Foods_type::class, 'foods_food_types');
+        return $this->belongsToMany(Foods_type::class, 'foods_food_type', 'foods_id', 'food_types_id');
     }
 
     public function getRateRatio(): int
@@ -54,7 +54,7 @@ class Foods extends Model
 
     public function getFoodTypesIds(){
         $ids = [];
-        foreach( $this->FoodType() as $food_type ){
+        foreach( $this->food_types as $food_type){
             $ids[] = $food_type->id;
         }
         return $ids;

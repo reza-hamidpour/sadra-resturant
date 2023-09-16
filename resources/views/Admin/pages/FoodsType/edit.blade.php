@@ -10,13 +10,16 @@
                 <div class="card-body">
                     <h4 class="card-title">Create your Category</h4>
                     <p class="card-description"> Sadra Restaurant Foods Category</p>
-                    @if(isset($foods_type))
-                        <form class="forms-sample" action="/admin/foods_type/update/{{ $foods_type->id }}" method="POST">
+                    @if(isset($food_type))
+                        <form class="forms-sample" action="/admin/foods_type/update/{{ $food_type->id }}" method="POST">
                             @method('PATCH')
                             @csrf
                             <div class="form-group">
                                 <label for="type_title">Category Name</label>
-                                <input type="text" name="type_title" class="form-control" id="type_title" placeholder="Title" value="{{ $foods_type->type_title }}">
+                                <input type="text" name="type_title"
+                                       class="form-control"
+                                       id="type_title" placeholder="Title"
+                                       value="{{ $food_type->type_title }}">
                                 @error('type_title')
                                 <small class="text text-danger">{{ $message }}</small>
                                 @enderror
