@@ -60,11 +60,4 @@ class Foods extends Model
         return $ids;
     }
 
-
-    public function popular_items(){
-
-        return Foods::take(8)->get();;
-    }
-
-
 }
