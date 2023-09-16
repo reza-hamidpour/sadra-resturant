@@ -46,6 +46,14 @@
                             <small class="text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="food_types">Category</label>
+                            <select name="food_types" id="food_types" class="dropdown" multiple>
+                                @foreach($food_types as $type)
+                                    <option value="{{ $type->id }}" {{ in_array($type->id, $food_types_ids) ? 'selected': '' }}>{{ $type->type_title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-check form-group row form-check-primary">
                             <label for="need_age_check" class="form-check-label">
                                 <input type="checkbox" name="need_age_check" class="form-check-input" id="need_age_check" {{ $food->need_age_check == true ? 'check' : '' }}/>
@@ -56,17 +64,18 @@
                         </div>
 
                         <div class="form-group">
-                            <label>File upload</label>
-                            <input type="file" name="pic_url[]" class="file-upload-default">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Food Picture" value="{{ $food->pic_url }}">
-                                <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                        <i class="fa fa-picture-o"></i> Choose
+                                    </a>
                                 </span>
+                                <input id="thumbnail" class="form-control" type="text" name="pic_url" value="{{ $food->pic_url ?? "TEST" }}">
+                            </div>
+                            <img id="holder" style="margin-top:15px;max-height:100px;">
                                 @error('pic_url')
                                 <small class="text text-danger">{{ $message }}</small>
                                 @enderror
-                            </div>
                         </div>
                         @csrf
                         <input type="submit" class="btn btn-primary mr-2" value="Submit"/>

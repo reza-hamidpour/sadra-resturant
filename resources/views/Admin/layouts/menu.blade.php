@@ -2,7 +2,7 @@
     <ul class="nav">
         <li class="nav-item nav-category">Main</li>
         <li class="nav-item">
-            <a class="nav-link" href="index.blade.php">
+            <a class="nav-link" href="{{ route('dashboard') }}">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -15,28 +15,42 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a href="{{ route('foods-index') }}" class="nav-link">All</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('food-create') }}">Add</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse"  href="#food_types" aria-expanded="false" aria-controls="food_types">
-                            <span class="menu-title">Food Types</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="food_types">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Add</a>
-                                </li>
-                                <li class="nav-item"><a href="#" class="nav-link">Edit</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
+                    <li class="nav-item"><a href="{{ route('foods-index') }}" class="nav-link">View All</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('food-create') }}">Create New</a></li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" data-toggle="collapse" href="#foods_type" aria-expanded="false" aria-controls="foods_type">
+                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+                <span class="menu-title">Foods Category</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="foods_type">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a href="{{route('foods_type_create')}}" class="nav-link">Create New</a></li>
+                    <li class="nav-item"><a href="{{ route('foods_type')  }}" class="nav-link">View All</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+                <span class="menu-title">User Pages</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
                 <span class="menu-title">Icons</span>
             </a>
@@ -59,22 +73,7 @@
                 <span class="menu-title">Tables</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">User Pages</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                </ul>
-            </div>
-        </li>
+
         <li class="nav-item documentation-link">
             <a class="nav-link" href="http://www.bootstrapdash.com/demo/connect-plus-free/jquery/documentation/documentation.html" target="_blank">
                 <span class="icon-bg">

@@ -17,8 +17,9 @@ class Foods extends Model
      * @var mixed
      */
 
-    public function FoodType(){
-        return $this->hasMany(Foods_type::class);
+    public function food_types()
+    {
+        return $this->belongsToMany(Foods_type::class, 'foods_food_types');
     }
 
     public function getRateRatio(): int
@@ -26,7 +27,7 @@ class Foods extends Model
         return 0;
     }
 
-    public function getAgeStatue(): string
+    public function getAgeStatus(): string
     {
 
         if( $this->need_age_check == true ) {
@@ -43,13 +44,21 @@ class Foods extends Model
 
     public function getStatus(): string
     {
-        if($this->draft === true){
+
+        if($this->draft){
             return "Published";
         }
 
         return "Drafted";
     }
 
+    public function getFoodTypesIds(){
+        $ids = [];
+        foreach( $this->FoodType() as $food_type ){
+            $ids[] = $food_type->id;
+        }
+        return $ids;
+    }
 
 
 }
