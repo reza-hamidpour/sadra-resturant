@@ -18,6 +18,7 @@ class CreateFoodsTable extends Migration
             $table->string("title");
             $table->string("slug");
             $table->string("price");
+            $table->string("ingredient")->nullable();
             $table->integer("ratio")->default(0);
             $table->string("pic_url")->nullable();
             $table->boolean("need_age_check")->default(false);

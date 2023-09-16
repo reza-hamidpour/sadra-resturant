@@ -48,6 +48,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="ingredient">Ingredient</label>
+                            <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="" value="{{ old('ingredient') }}">
+                            @error('ingredient')
+                            <small class="text text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="food_types">Category</label>
                             <select name="food_types[]" id="food_types" class="dropdown" multiple>
                                 @foreach($food_types as $type)

@@ -29,7 +29,7 @@ class FoodsController extends Controller
         $validate = [
             "title" => "required|string|max:255",
             "price" => "required",
-            "ratio" => "integer",
+            "ingredient" => "string|nullable",
             "pic_url" => "string",
             "need_age_check" => [Rule::in([0,1, true, false])],
             "order" => "integer",
@@ -42,6 +42,7 @@ class FoodsController extends Controller
         $food->title = $request->title;
         $food->slug = $request->title;
         $food->price = $request->price;
+        $food->ingredient = $request->ingredient;
         $food->ratio = 0;
         $food->pic_url = $request->pic_url;
         $food->need_age_check = $request->need_age_check ? true : false;
@@ -76,6 +77,7 @@ class FoodsController extends Controller
         $validate = [
             "title" => "required|string|max:255",
             "price" => "required",
+            "ingredient" => "string|nullable",
             "need_age_check" => [Rule::in(["on", null])],
             "pic_url" => "nullable",
             "draft" => "boolean",
@@ -87,6 +89,7 @@ class FoodsController extends Controller
         $data = [
             'title' => $request->title,
             'price' => $request->price,
+            'ingredient' => $request->ingredient,
             'pic_url' => '',
             'need_age_check' => $request->need_age_check == "on" ? true: false,
             'draft' => $request->draft ? false : true,

@@ -1,14 +1,14 @@
-<!DOCTYPE html>	
+<!DOCTYPE html>
 <html dir="ltr">
 <head>
 	<meta http-equiv="content-type" content="text/html" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Sadra Restaurant</title>
-	<link rel="stylesheet" type="text/css" href="dist/css/style.css">	
-	<script type="text/javascript" src="dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="dist/js/jquery-3.7.1.min.js"></script>
-	<script type="text/javascript" src="dist/js/script.js"></script>
-	<script type="text/javascript" src="dist/js/owl.carousel.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset('client-side/dist/css/style.css') }}">
+	<script type="text/javascript" src="{{ asset('client-side/dist/js/bootstrap.bundle.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('client-side/dist/js/jquery-3.7.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('client-side/dist/js/script.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('client-side/dist/js/owl.carousel.min.js') }}"></script>
 </head>
 	<body>
 		<header class="index-header">
@@ -16,7 +16,7 @@
 				<div class="row">
 					<div id="Logo" class="col-lg-2 col-4">
 						<a href="#">
-							<img src="dist/images/logo.png" alt="" title="">
+							<img src="{{ asset('client-side/dist/images/logo.png') }}" alt="" title="">
 						</a>
 					</div>
 					<div id="MainNav" class="col-lg-7 col-sm-6 col-8">
@@ -27,7 +27,7 @@
 							<li><a href="#">gallery</a></li>
 						</ul>
 					</div>
-					<div id="HeadBtnArea" class="col-lg-3 col-8"> 
+					<div id="HeadBtnArea" class="col-lg-3 col-8">
 						<a href="#" class="HeadBtnLink">Order Online</a>
 						<div class="CartBtn">
 							<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
@@ -70,13 +70,13 @@
 						<div class="col-12">
 							<div class="owl-carousel owl-theme owl-delivery">
 								<div class="item">
-									<img src="dist/images/doordash.svg" alt="" height="60">
+									<img src="{{ asset('client-side/dist/images/doordash.svg') }}" alt="" height="60">
 								</div>
 								<div class="item">
-									<img src="dist/images/skipthedishes.svg" alt="" height="60">
+									<img src="{{ asset('client-side/dist/images/skipthedishes.svg') }}" alt="" height="60">
 								</div>
 								<div class="item">
-									<img class="mt-2" src="dist/images/ubereats.svg" alt="" height="40">
+									<img class="mt-2" src="{{ asset('client-side/dist/images/ubereats.svg') }}" alt="" height="40">
 								</div>
 							</div>
 						</div>
@@ -99,16 +99,16 @@
 						<div class="AboutUsContent">
 							<h2>SADRA RESTURANT</h2>
 							<p>At Sadra, we care about your health and ours. Our staff maintain the highest levels of personal hygiene and we make sure the equipment are being sanitized carefully and vigorously. Your safety and peace of mind matters the most when we serve you.</p>
-							<p>A restaurant is a business that connects people through delicious food, comfortable space, and memorable service. We believe that the greatest restaurants not only connect people, but also build lasting relationships, both staff-to-guest and staff-to-staff.</p>	
+							<p>A restaurant is a business that connects people through delicious food, comfortable space, and memorable service. We believe that the greatest restaurants not only connect people, but also build lasting relationships, both staff-to-guest and staff-to-staff.</p>
 							<div class="AboutUsContentSignature">
-								<img src="dist/images/logo-handwrite.png" class="img-fluid" alt="">
+								<img src="{{ asset('client-side/dist/images/logo-handwrite.png') }}" class="img-fluid" alt="">
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="AboutUsImage">
 							<div class="AboutUsSince"><span><i>since</i><i>2002</i></span></div>
-							<img src="dist/images/mario-mesaglio-7BZzlV0Z9R4-unsplash-780x520.jpg" class="img-fluid" alt="">
+							<img src="{{ asset('client-side/dist/images/mario-mesaglio-7BZzlV0Z9R4-unsplash-780x520.jpg') }}" class="img-fluid" alt="">
 						 </div>
 					</div>
 				</div>
@@ -160,7 +160,7 @@
 							<div class="ProductItemBox">
 								<a href="">
 									<div class="ProductItemImage">
-										<img src="dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png" class="img-fluid" title="" alt="">
+										<img src="{{ asset('client-side/dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png') }}" class="img-fluid" title="" alt="">
 									</div>
 									<div class="ProductItemText">
 										<h2>Boneless Chicken <span>(Joojeh Kabab)</span></h2>
@@ -180,6 +180,60 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-6">
+						<div class="ProductItem">
+							<div class="ProductItemBox">
+								<a href="">
+									<div class="ProductItemImage">
+										<img src="{{ asset('client-side/dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png') }}" class="img-fluid" title="" alt="">
+									</div>
+									<div class="ProductItemText">
+										<h2>Boneless Chicken <span>(Joojeh Kabab)</span></h2>
+										<p>Tender pieces of marinated chicken breast. Served with ...</p>
+									</div>
+								</a>
+								<div class="ProductItemDetails">
+									<div class="ProductItemPrice">$19.99</div>
+									<div class="ProductItemRate">
+										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+									 </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-xl-3 col-lg-4 col-md-6">
+						<div class="ProductItem">
+							<div class="ProductItemBox">
+								<a href="">
+									<div class="ProductItemImage">
+										<img src="{{ asset('client-side/dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png') }}" class="img-fluid" title="" alt="">
+									</div>
+									<div class="ProductItemText">
+										<h2>Boneless Chicken <span>(Joojeh Kabab)</span></h2>
+										<p>Tender pieces of marinated chicken breast. Served with ...</p>
+									</div>
+								</a>
+								<div class="ProductItemDetails">
+									<div class="ProductItemPrice">$19.99</div>
+									<div class="ProductItemRate">
+										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
+									 </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 
 					<div class="col-xl-3 col-lg-4 col-md-6">
 						<div class="ProductItem">
@@ -261,60 +315,6 @@
 						</div>
 					</div>
 
-
-					<div class="col-xl-3 col-lg-4 col-md-6">
-						<div class="ProductItem">
-							<div class="ProductItemBox">
-								<a href="">
-									<div class="ProductItemImage">
-										<img src="dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png" class="img-fluid" title="" alt="">
-									</div>
-									<div class="ProductItemText">
-										<h2>Boneless Chicken <span>(Joojeh Kabab)</span></h2>
-										<p>Tender pieces of marinated chicken breast. Served with ...</p>
-									</div>
-								</a>
-								<div class="ProductItemDetails">
-									<div class="ProductItemPrice">$19.99</div>
-									<div class="ProductItemRate">
-										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-									 </div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="col-xl-3 col-lg-4 col-md-6">
-						<div class="ProductItem">
-							<div class="ProductItemBox">
-								<a href="">
-									<div class="ProductItemImage">
-										<img src="dist/images/dressing-balsamic-black-pepper-grill-chicken-recipe.png" class="img-fluid" title="" alt="">
-									</div>
-									<div class="ProductItemText">
-										<h2>Boneless Chicken <span>(Joojeh Kabab)</span></h2>
-										<p>Tender pieces of marinated chicken breast. Served with ...</p>
-									</div>
-								</a>
-								<div class="ProductItemDetails">
-									<div class="ProductItemPrice">$19.99</div>
-									<div class="ProductItemRate">
-										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-										<span><svg class="active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="currentColor"></path></svg></span>
-									 </div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
 					<div class="col-xl-3 col-lg-4 col-md-6">
 						<div class="ProductItem">
 							<div class="ProductItemBox">
@@ -369,7 +369,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="Gallery">
 			<div class="container">
 				<div class="row">
@@ -443,7 +443,7 @@
 									</div>
 								</div>
 							</div>
-						</div> 
+						</div>
 					</div>
 				</div>
 			</div>

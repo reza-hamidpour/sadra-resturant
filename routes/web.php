@@ -36,9 +36,7 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
     Route::get('/foods_type/delete/{food_type}', [FoodsTypeController::class, 'destroy'])->name('foods_type_destroy');
 
 });
-Route::get('/', function () {
-    return view('Admin.index');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 //, 'auth'
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
