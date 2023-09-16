@@ -61,4 +61,10 @@ class Foods extends Model
     }
 
 
+    public function popular_items(){
+
+        return Foods::take(8)->get();;
+    }
+
+
 }
