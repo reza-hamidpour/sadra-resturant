@@ -1,9 +1,8 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FoodsController;
 use App\Http\Controllers\Admin\FoodsTypeController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__.'/auth.php';
 
-Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(function(){
-    Route::get('/', function(){
+
+
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
+
+Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(function () {
+    Route::get('/', function () {
         return view('Admin.index');
     })->name('dashboard');
     Route::get("/foods", [FoodsController::class, 'index'])->name('foods-index');
@@ -36,8 +42,9 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
     Route::get('/foods_type/delete/{food_type}', [FoodsTypeController::class, 'destroy'])->name('foods_type_destroy');
 
 });
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
 //, 'auth'
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+

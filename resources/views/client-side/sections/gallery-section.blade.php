@@ -18,9 +18,14 @@
         <div class="row">
             <div class="col-12">
                 <div class="owl-carousel owl-theme owl-gallery">
-                    <div class="item">
-                        <img src="dist/images/mario-mesaglio-7BZzlV0Z9R4-unsplash-780x520.jpg" class="img-fluid" title="" alt="">
-                    </div>
+                    @if(isset($gallery))
+                        @foreach($gallery as $item)
+                            <div class="item">
+                                <img src="{{ asset('dist/images/mario-mesaglio-7BZzlV0Z9R4-unsplash-780x520.jpg') }}"
+                                     class="img-fluid" title="" alt="">
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
