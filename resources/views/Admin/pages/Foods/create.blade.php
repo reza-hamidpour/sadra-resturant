@@ -70,20 +70,22 @@
                                 <small class="text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-
                         <div class="form-group">
-                            <label>File upload</label>
-                            <input type="file" name="img[]" class="file-upload-default">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Food Picture">
-                                <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                </span>
-                                @error('pic_url')
-                                    <small class="text text-danger">{{ $message }}</small>
-                                @enderror
+                            <div class="input-group">
+                                    <span class="input-group-btn">
+                                         <a id="lfm" data-input="pic_url" data-preview="holder" class="btn btn-primary">
+                                             <i class="fa fa-picture-o"></i> Choose
+                                         </a>
+                                    </span>
+                                <input id="pic_url" class="form-control" type="text" name="pic_url" value="{{ old('pic_url') }}">
+                            </div>
+                            <div id="holder" style="margin-top:15px;max-height:100px;">
                             </div>
                         </div>
+                        @error('pic_url')
+                        <small class="text text-danger">{{ $message }}</small>
+                        @enderror
+                        <script type="text/javascript">  $('#lfm').filemanager('image'); </script>
                         <input type="submit" class="btn btn-primary mr-2" value="Submit"/>
                     </form>
                 </div>

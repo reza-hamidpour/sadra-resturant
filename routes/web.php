@@ -24,7 +24,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 
 Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('Admin.index');
     })->name('dashboard');
     Route::get("/foods", [FoodsController::class, 'index'])->name('foods-index');

@@ -20,10 +20,17 @@
     <link rel="stylesheet" href="{{ asset('Admin/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('Admin/assets/images/favicon.png') }}" />
+
+    <!-- Laravel File manager js files (UniSharp) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ asset('/vendor/laravel-filemanager/js/jquery.js') }}"></script>
+    <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    <!-- END File manager js files (UniSharp) -- >
+
 </head>
 <body>
 <div class="container-scroll">
-    <!-- partial:partials/_navbar.html -->
+    <! partial:partials/_navbar.html -->
     @include('Admin.layouts.header')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">

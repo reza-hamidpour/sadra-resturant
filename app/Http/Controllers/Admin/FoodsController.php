@@ -37,7 +37,6 @@ class FoodsController extends Controller
             "food_types*" => ['required', 'array:ids', Rule::in($types)]
         ];
         $request->validate($validate);
-
         $food = new Foods();
         $food->title = $request->title;
         $food->slug = $request->title;
@@ -90,7 +89,7 @@ class FoodsController extends Controller
             'title' => $request->title,
             'price' => $request->price,
             'ingredient' => $request->ingredient,
-            'pic_url' => '',
+            'pic_url' => $request->pic_url,
             'need_age_check' => $request->need_age_check == "on" ? true: false,
             'draft' => $request->draft ? false : true,
         ];
