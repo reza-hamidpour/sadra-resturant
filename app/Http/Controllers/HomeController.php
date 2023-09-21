@@ -26,8 +26,12 @@ class HomeController extends Controller
    }
 
    protected function getGallery(){
-
-       return Gallery::take(10)->get();
+        $gallery = Gallery::where('index_show', true)->where('draft', 0)->get();
+        if( $gallery->isNotEmpty())
+            $gallery = $gallery->first();
+        else
+            $gallery = null;
+       return $gallery;
 
    }
 
