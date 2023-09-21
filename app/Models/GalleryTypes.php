@@ -9,5 +9,10 @@ class GalleryTypes extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['pic_url'];
+
+    public function gallery(){
+        return $this->belongsTo(Gallery::class, 'gallery_id', 'id');
+    }
 
 }
