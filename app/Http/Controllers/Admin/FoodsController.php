@@ -101,7 +101,7 @@ class FoodsController extends Controller
             {
                 $food->food_types()->sync($request->food_types);
                 $food_types_ids = $food->getFoodTypesIds();
-                return view('Admin.pages.Foods.edit', compact('food', 'food_types', 'food_types_ids'))->with('notify', ['msg' => 'Food updated successfully.', 'status' => 'success']);
+                    return view('Admin.pages.Foods.edit', compact('food', 'food_types', 'food_types_ids'))->with('notify', ['msg' => 'Food updated successfully.', 'status' => 'success']);
             }
         }catch(\Exceptiontion $e){
             return redirect('foods-index')->with('notify', ['msg' => 'Could not update this Food, please try again.', 'status' => 'danger']);
