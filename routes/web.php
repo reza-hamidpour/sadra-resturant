@@ -47,7 +47,7 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
     Route::post('/gallery/create', [\App\Http\Controllers\Admin\GalleryController::class, 'store'])->name('gallery-store');
     Route::get('/gallery/{gallery}/edit', [\App\Http\Controllers\Admin\GalleryController::class, 'edit'])->name('gallery-edit');
     Route::patch('/gallery/{gallery}/edit', [\App\Http\Controllers\Admin\GalleryController::class,'update'])->name('gallery-update');
-    Route::delete('/gallery/{gallery}/delete', [\App\Http\Controllers\Admin\GalleryController::class, 'destroy'])->name('gallery-destroy');
+    Route::get('/gallery/{gallery}/delete', [\App\Http\Controllers\Admin\GalleryController::class, 'destroy'])->name('gallery-destroy');
 
 
 });

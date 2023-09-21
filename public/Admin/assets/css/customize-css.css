@@ -1,0 +1,6 @@
+.overflow-td{
+    max-width: 200px;
+    text-overflow-ellipsis: ellipsis;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}

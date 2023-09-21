@@ -21,7 +21,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Title</th>
+                            <th class="overflow-td">Title</th>
                             <th>price</th>
                             <th>ratio</th>
                             <th>thumbnail</th>
@@ -34,7 +34,7 @@
                         @forelse($foods as $food)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td>{{ $food->title }}</td>
+                                <td class="overflow-td">{{ $food->title }}</td>
                                 <td>{{ $food->price }}CAD</td>
                                 <td>{{ $food->getRateRatio() }}</td>
                                 <td>{{ $food->getThumbnail }}</td>
@@ -55,6 +55,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

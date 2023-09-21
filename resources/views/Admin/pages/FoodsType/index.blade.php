@@ -24,7 +24,7 @@
                     @forelse($foods_type as $type)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $type->type_title }}</td>
+                            <td class="overflow-td">{{ $type->type_title }}</td>
                             <td>
                                 <a href="{{ route('foods_type_edit', $type->id) }}">
                                     <i class="mdi mdi-table-edit"></i>

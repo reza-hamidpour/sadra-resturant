@@ -29,7 +29,23 @@ $(document).ready(function() {
 	$(document.body).on('click', '.close-btn-gallery-view' ,function(){
 		$('.ViewImageGallery').remove();
 	});
-	
+
+	$(document.body).on('click', '.ViewImageGallery' ,function(){
+		$('.ViewImageGallery').remove();
+	});
+
+	$( "#my-account-mobile-menu" ).click(function() {
+		bx = $('.my-account-side-area');
+		var height = $('.my-account-side').height() + 60;
+		if(bx.height()){ 
+			$(this).removeClass('active');
+			bx.height('0');
+		} else {
+			$(this).addClass('active');
+			bx.height(height);
+		}
+	});
+
 	$('.owl-delivery').owlCarousel({
 		items:1,
 		loop:false,

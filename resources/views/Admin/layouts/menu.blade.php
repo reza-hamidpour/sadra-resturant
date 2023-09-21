@@ -1,13 +1,13 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-category">Main</li>
-        <li class="nav-item">
+        <li class="nav-item {{ Route::currentRouteName() == "dashboard"? 'active': '' }}">
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  {{ (in_array( Route::currentRouteName(), ["food-index", 'food-create', 'food-edit']))? 'active': '' }}">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
                 <span class="menu-title">Foods</span>
@@ -15,12 +15,12 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a href="{{ route('foods-index') }}" class="nav-link">View All</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('food-create') }}">Create New</a></li>
+                    <li class="nav-item {{ Route::currentRouteName() == "food-index" ? 'active': '' }}"><a class="nav-link" href="{{ route('foods-index') }}" class="nav-link">View All</a></li>
+                    <li class="nav-item {{ Route::currentRouteName() == "food-create" ? 'active': '' }}"><a class="nav-link" href="{{ route('food-create') }}">Create New</a></li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ (in_array(Route::currentRouteName(), ['foods_type_create', 'foods_type', 'foods_type_edit'] )) ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#foods_type" aria-expanded="false" aria-controls="foods_type">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
                 <span class="menu-title">Foods Category</span>
@@ -28,67 +28,33 @@
             </a>
             <div class="collapse" id="foods_type">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a href="{{route('foods_type_create')}}" class="nav-link">Create New</a></li>
-                    <li class="nav-item"><a href="{{ route('foods_type')  }}" class="nav-link">View All</a></li>
+                    <li class="nav-item {{ Route::currentRouteName() == "foods_type_create" ? 'active': '' }} "><a class="nav-link" href="{{route('foods_type_create')}}" class="nav-link">Create New</a></li>
+                    <li class="nav-item {{ Route::currentRouteName() == "foods_type" ? 'active': '' }}"><a class="nav-link" href="{{ route('foods_type')  }}" class="nav-link">View All</a></li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">User Pages</span>
+        <li class="nav-item {{ (in_array(Route::currentRouteName(), ['gallery-index', 'gallery-create', 'gallery-edit'])) ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#gallery" aria-expanded="false" aria-controls="gallery">
+                <span class="icon-bg"><i class="mdi mdi-image menu-icon"></i></span>
+                <span class="menu-title">Gallery</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
+            <div class="collapse" id="gallery">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                    <li class="nav-item {{ Route::currentRouteName() == 'gallery-index' ? 'active': '' }}"><a class="nav-link" href="{{ route('gallery-index') }}" class="nav-link">View all</a></li>
+                    <li class="nav-item {{ Route::currentRouteName() === 'gallery-create'? 'active': '' }} {{ Route::currentRouteName() }}">
+                        <a class="nav-link" href="{{ route('gallery-create') }}" class="nav-link">Create New</a></li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-                <span class="menu-title">Icons</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                <span class="menu-title">Charts</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
-                <span class="menu-title">Tables</span>
-            </a>
-        </li>
 
-        <li class="nav-item documentation-link">
-            <a class="nav-link" href="http://www.bootstrapdash.com/demo/connect-plus-free/jquery/documentation/documentation.html" target="_blank">
-                <span class="icon-bg">
-                  <i class="mdi mdi-file-document-box menu-icon"></i>
-                </span>
-                <span class="menu-title">Documentation</span>
-            </a>
-        </li>
         <li class="nav-item sidebar-user-actions">
             <div class="user-details">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <div class="d-flex align-items-center">
                             <div class="sidebar-profile-img">
-                                <img src="assets/images/faces/face28.png" alt="image">
+                                <img src="{{ asset('Admin/assets/images/faces/face28.png') }}" alt="image">
                             </div>
                             <div class="sidebar-profile-text">
                                 <p class="mb-1">Henry Klein</p>
@@ -108,13 +74,7 @@
         </li>
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
-                    <span class="menu-title">Take Tour</span></a>
-            </div>
-        </li>
-        <li class="nav-item sidebar-user-actions">
-            <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                <a href="{{ route('logout') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
                     <span class="menu-title">Log Out</span></a>
             </div>
         </li>

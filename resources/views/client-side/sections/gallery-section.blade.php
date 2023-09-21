@@ -19,12 +19,14 @@
             <div class="col-12">
                 <div class="owl-carousel owl-theme owl-gallery">
                     @if(isset($gallery))
-                        @foreach($gallery as $item)
+                        @forelse($gallery->gallery_types()->get() as $item)
                             <div class="item">
-                                <img src="{{ asset('dist/images/mario-mesaglio-7BZzlV0Z9R4-unsplash-780x520.jpg') }}"
-                                     class="img-fluid" title="" alt="">
+                                <img src="{{ $item->pic_url }}"
+                                     class="img-fluid" title="{{ $gallery->title }}" alt="{{ $gallery->title }}">
                             </div>
-                        @endforeach
+                        @empty
+
+                        @endforelse
                     @endif
                 </div>
             </div>

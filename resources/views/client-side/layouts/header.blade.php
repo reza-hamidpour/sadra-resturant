@@ -8,10 +8,10 @@
             </div>
             <div id="MainNav" class="col-lg-7 col-sm-6 col-8">
                 <ul>
-                    <li class="active"><a href="#">menu</a></li>
-                    <li><a href="#">about us</a></li>
-                    <li><a href="#">contant us</a></li>
-                    <li><a href="#">gallery</a></li>
+                    <li class="{{ Route::currentRouteName() == 'menu' ? 'active' : '' }}"><a href="#">menu</a></li>
+                    <li class="{{ Route::currentRouteName() == 'about-us' ? 'active' : '' }}"><a href="#">about us</a></li>
+                    <li class="{{ Route::currentRouteName() == 'contact-us'? 'active' : '' }}"><a href="#">contant us</a></li>
+                    <li class="{{ Route::currentRouteName() == 'gallery' ? 'active': '' }}"><a href="#">gallery</a></li>
                 </ul>
             </div>
             <div id="HeadBtnArea" class="col-lg-3 col-8">
