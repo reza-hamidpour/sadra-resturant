@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FoodsController;
 use App\Http\Controllers\Admin\FoodsTypeController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\MenuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +20,7 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 
 Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(function () {
@@ -49,8 +49,9 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
     Route::patch('/gallery/{gallery}/edit', [\App\Http\Controllers\Admin\GalleryController::class,'update'])->name('gallery-update');
     Route::get('/gallery/{gallery}/delete', [\App\Http\Controllers\Admin\GalleryController::class, 'destroy'])->name('gallery-destroy');
 
-
 });
+
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 //, 'auth'
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
