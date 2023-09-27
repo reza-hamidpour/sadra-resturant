@@ -1,4 +1,4 @@
-<header class="index-header">
+<header class="{{ Route::currentRouteName() == 'index' ? 'index-header' : 'page-header' }}">
     <div class="container">
         <div class="row">
             <div id="Logo" class="col-lg-2 col-4">
