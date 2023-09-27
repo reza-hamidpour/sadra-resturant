@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FoodsController;
 use App\Http\Controllers\Admin\FoodsTypeController;
@@ -52,6 +54,8 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
 });
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery-archive');
+Route::get('/gallery/{gallery}', [GalleryController::class, 'single'])->name('gallery-single');
 
 //, 'auth'
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
