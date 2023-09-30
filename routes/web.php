@@ -51,6 +51,13 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
     Route::patch('/gallery/{gallery}/edit', [\App\Http\Controllers\Admin\GalleryController::class,'update'])->name('gallery-update');
     Route::get('/gallery/{gallery}/delete', [\App\Http\Controllers\Admin\GalleryController::class, 'destroy'])->name('gallery-destroy');
 
+    Route::get('/links', [\App\Http\Controllers\Admin\HeadMenuController::class, 'index'])->name('links_index');
+    Route::get('/links/create', [\App\Http\Controllers\Admin\HeadMenuController::class, 'create'])->name('links_create');
+    Route::post('/links/create', [\App\Http\Controllers\Admin\HeadMenuController::class,'store'])->name('links_store');
+    Route::get('/links/{link}/edit', [\App\Http\Controllers\Admin\HeadMenuController::class, 'edit'])->name('links_edit');
+    Route::patch('/links/{link}/edit', [\App\Http\Controllers\Admin\HeadMenuController::class, 'update'])->name('links_update');
+    Route::get('/links/{link}/delete', [\App\Http\Controllers\Admin\HeadMenuController::class, 'destroy'])->name('links_destroy');
+
 });
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
