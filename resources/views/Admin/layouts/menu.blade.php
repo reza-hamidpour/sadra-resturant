@@ -47,7 +47,23 @@
                 </ul>
             </div>
         </li>
-
+        <li class="nav-item {{ (in_array(Route::currentRouteName(), ['links_index', 'links_create', 'links_edit'])) ? 'active' : '' }}">
+            <a href="#links" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="links">
+                <span class="icon-bg"><i class="mdi mdi-image menu-icon"></i></span>
+                <span class="menu-title">Links</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="links">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ Route::currentRouteName() == 'links_create'? 'active' : '' }}">
+                        <a href="{{ route('links_create') }}" class="nav-link">Create</a>
+                    </li>
+                    <li class="nav-item {{ Route::currentRouteName() == 'links_index' ? 'active' : '' }}">
+                        <a href="{{ route('links_index') }}" class="nav-link">View All</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="nav-item sidebar-user-actions">
             <div class="user-details">
                 <div class="d-flex justify-content-between align-items-center">
