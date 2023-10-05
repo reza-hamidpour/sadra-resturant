@@ -23,6 +23,16 @@
                             <h3>welcome back</h3>
                             <p>sign in with your email address and password</p>
                             <div class="ContactFormBox-Form-Area mt-3">
+                                @error('email')
+                                    <div class="row">
+                                        <span class="alert alert-danger">{{ $message }}</span>
+                                    </div>
+                                @enderror
+                                @error('password')
+                                <div class="row">
+                                    <span class="alert alert-danger">{{ $message }}</span>
+                                </div>
+                                @enderror
                                 <div class="row">
                                     <div class="FrmGp mb-3 col-lg-12">
 											<span>
@@ -32,9 +42,7 @@
                                                         fill="currentColor"></path></svg>
 											</span>
                                         <input type="text" placeholder="Your Email Address" name="email" value="{{ old('username') }}"/>
-                                        @error('email')
-                                            <span>{{ $message }}</span>
-                                        @enderror
+
                                     </div>
                                     <div class="FrmGp mb-3  col-lg-12">
 											<span>
@@ -44,9 +52,6 @@
                                                         fill="currentColor"></path></svg>
 											</span>
                                         <input type="password" placeholder="Your Password" name="password"/>
-                                        @error('password')
-                                            <span>{{ $message }}</span>
-                                        @enderror
                                     </div>
                                     <div class="text-end">
                                         <a href="#" class="forgot-link-password">Forgot
