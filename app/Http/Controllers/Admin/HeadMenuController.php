@@ -73,9 +73,8 @@ class HeadMenuController extends Controller
         $data = [
             'title' =>  $request->title,
             'href' => $request->href,
-            'parent' => $request->parent!== 0 ? $request->parent : null,
+            'parent' => $request->parent !== "0" ? $request->parent : null,
         ];
-
         $links = $this->getLinks();
         try{
             $link->update($data);

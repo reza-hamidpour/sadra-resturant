@@ -11,7 +11,7 @@
                     <h4 class="card-title">Update your Menu Links</h4>
                     <p class="card-description"> Sadra Restaurant Foods </p>
                     <form class="forms-sample" action="{{ route('links_update', ['link' => $link]) }}" method="post">
-                        @method('PATCH')
+                        @method('PUT')
                         @csrf
                         <div class="form-group">
                             <label for="link_title">Link Title</label>
