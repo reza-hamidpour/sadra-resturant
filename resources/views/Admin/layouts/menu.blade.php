@@ -70,15 +70,22 @@
                     <div>
                         <div class="d-flex align-items-center">
                             <div class="sidebar-profile-img">
-                                <img src="{{ asset('Admin/assets/images/faces/face28.png') }}" alt="image">
+{{--                                <img src="" alt="image">--}}
                             </div>
                             <div class="sidebar-profile-text">
-                                <p class="mb-1">Henry Klein</p>
+                                <p class="mb-1">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="badge badge-danger">3</div>
+{{--                    <div class="badge badge-danger">3</div>--}}
                 </div>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="sidebar-user-menu">
+                <a href="{{ route('user_profile') }}" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title">Profile</span>
+                </a>
             </div>
         </li>
         <li class="nav-item sidebar-user-actions">
@@ -90,8 +97,11 @@
         </li>
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
-                <a href="{{ route('logout') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="mdi mdi-logout menu-icon"></i>
                     <span class="menu-title">Log Out</span></a>
+                <form id="logout" action="{{ route('logout') }}" method="post" hidden>
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>

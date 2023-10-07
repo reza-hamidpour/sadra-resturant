@@ -11,8 +11,16 @@
                     @if( isset($menus) )
 
                         @foreach($menus as $menu)
-                            <li class="{{ Route::current()->uri() == $menu->href ? 'active': '' }}"><a href="{{ $menu->href }}">{{ $menu->title }}</a></li>
+
+                                <li class="{{ Route::current()->uri() == $menu->href ? 'active': '' }}"><a href="{{ $menu->href }}">{{ $menu->title }}</a></li>
+
                         @endforeach
+                            @if(!Auth::check())
+                                <li class="{{ Route::current()->uri() == "login" ? 'active': '' }}"><a href="{{ route('login') }}">Login</a></li>
+                            @elseif(Auth::check() && Route::current()->uri() !== "dashboard")
+                                <li class="{{ Route::current()->uri() == "login" ? 'active': '' }}"><a href="{{ route('user_profile') }}">Profile</a></li>
+                            @endif
+
                     @endif
                 </ul>
             </div>
