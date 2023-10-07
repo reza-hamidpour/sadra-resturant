@@ -19,19 +19,19 @@ class AdminUserCreatorSeeder extends Seeder
     {
         $user = User::create([
             'name' => "Sadra Resturant",
-            'email' => 'sadra@sadraresturant.com',
+            'email' => 'info@sadra.com',
             'password' => Hash::make('12345678'),
         ]);
 
-        $role = Role::create(['name' => 'Admin']);
+#        $role = Role::create(['name' => 'Admin']);
 
-        try{
-            $role->givePermissionTo(Permission::all());
-        }catch(\Exception $e){
-            User::destroy($user->id);
-            Role::destroy($role->id);
-            dd($e);
-        }
+ #       try{
+  #          $role->givePermissionTo(Permission::all());
+  #      }catch(\Exception $e){
+ #           User::destroy($user->id);
+#            Role::destroy($role->id);
+    #        dd($e);
+   #     }
 
         $user->assignRole('admin');
 
