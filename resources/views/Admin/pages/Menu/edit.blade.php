@@ -24,7 +24,7 @@
                             <label for="href">
                                 Link
                             </label>
-                            <input type="text" name="href" id="href" class="form-control" placeholder="Link" value="{{ $link->link }}">
+                            <input type="text" name="href" id="href" class="form-control" placeholder="Link" value="{{ $link->href }}">
                             @error('href')
                             <small class="text text-danger">{{ $message }}</small>
                             @enderror
