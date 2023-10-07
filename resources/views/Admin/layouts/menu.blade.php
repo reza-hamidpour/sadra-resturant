@@ -47,22 +47,45 @@
                 </ul>
             </div>
         </li>
-
+        <li class="nav-item {{ (in_array(Route::currentRouteName(), ['links_index', 'links_create', 'links_edit'])) ? 'active' : '' }}">
+            <a href="#links" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="links">
+                <span class="icon-bg"><i class="mdi mdi-image menu-icon"></i></span>
+                <span class="menu-title">Links</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="links">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ Route::currentRouteName() == 'links_create'? 'active' : '' }}">
+                        <a href="{{ route('links_create') }}" class="nav-link">Create</a>
+                    </li>
+                    <li class="nav-item {{ Route::currentRouteName() == 'links_index' ? 'active' : '' }}">
+                        <a href="{{ route('links_index') }}" class="nav-link">View All</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="nav-item sidebar-user-actions">
             <div class="user-details">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <div class="d-flex align-items-center">
                             <div class="sidebar-profile-img">
-                                <img src="{{ asset('Admin/assets/images/faces/face28.png') }}" alt="image">
+{{--                                <img src="" alt="image">--}}
                             </div>
                             <div class="sidebar-profile-text">
-                                <p class="mb-1">Henry Klein</p>
+                                <p class="mb-1">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="badge badge-danger">3</div>
+{{--                    <div class="badge badge-danger">3</div>--}}
                 </div>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="sidebar-user-menu">
+                <a href="{{ route('user_profile') }}" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title">Profile</span>
+                </a>
             </div>
         </li>
         <li class="nav-item sidebar-user-actions">
@@ -74,8 +97,11 @@
         </li>
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
-                <a href="{{ route('logout') }}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="mdi mdi-logout menu-icon"></i>
                     <span class="menu-title">Log Out</span></a>
+                <form id="logout" action="{{ route('logout') }}" method="post" hidden>
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>

@@ -25,17 +25,18 @@ require __DIR__.'/auth.php';
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 
-Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(function () {
+Route::prefix('/admin')->middleware(['web', 'auth', 'can:admin-panel'])->namespace('admin')->group(function () {
+
     Route::get('/dashboard', function () {
         return view('Admin.index');
     })->name('dashboard');
 
-    Route::get("/foods", [FoodsController::class, 'index'])->name('foods-index');
-    Route::get("/foods/create", [FoodsController::class, 'create'])->name("food-create");
-    Route::post('/foods/create', [FoodsController::class, 'store'])->name('food-store');
-    Route::get('/foods/update/{food}', [FoodsController::class, 'show'])->name('food-show');
-    Route::patch('/foods/update/{food}', [FoodsController::class, 'update'])->name('food-update');
-    Route::get('/foods/delete/{food}', [FoodsController::class, 'destroy'])->name('food-destroy');
+    Route::get("/foods", [FoodsController::class, 'index'])->middleware('can:foods-create', 'can:foods-index')->name('foods-index');
+    Route::get("/foods/create", [FoodsController::class, 'create'])->name("food-create")->middleware('can:foods-create');
+    Route::post('/foods/create', [FoodsController::class, 'store'])->name('food-store')->middleware('can:foods-create');
+    Route::get('/foods/update/{food}', [FoodsController::class, 'show'])->name('food-show')->middleware('can:foods-edit');
+    Route::patch('/foods/update/{food}', [FoodsController::class, 'update'])->name('food-update')->middleware('can:foods-edit');
+    Route::get('/foods/delete/{food}', [FoodsController::class, 'destroy'])->name('food-destroy')->middleware('can:foods-destroy');
 
     Route::get('/foods_type', [FoodsTypeController::class, 'index'])->name('foods_type');
     Route::get('/foods_type/create', [FoodsTypeController::class, 'create'])->name('foods_type_create');
@@ -63,6 +64,9 @@ Route::prefix('/admin')->middleware(['web', 'auth'])->namespace('admin')->group(
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery-archive');
 Route::get('/gallery/{gallery}', [GalleryController::class, 'single'])->name('gallery-single');
+
+Route::get("/dashboard", [\App\Http\Controllers\UserProfileControler::class, 'index'])->name('user_profile');
+Route::patch('/dashboard', [\App\Http\Controllers\UserProfileControler::class, 'info_update'])->name('user_information_update');
 
 //, 'auth'
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

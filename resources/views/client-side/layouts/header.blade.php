@@ -8,10 +8,20 @@
             </div>
             <div id="MainNav" class="col-lg-7 col-sm-6 col-8">
                 <ul>
-                    <li class="{{ Route::currentRouteName() == 'menu' ? 'active' : '' }}"><a href="#">menu</a></li>
-                    <li class="{{ Route::currentRouteName() == 'about-us' ? 'active' : '' }}"><a href="#">about us</a></li>
-                    <li class="{{ Route::currentRouteName() == 'contact-us'? 'active' : '' }}"><a href="#">contant us</a></li>
-                    <li class="{{ Route::currentRouteName() == 'gallery' ? 'active': '' }}"><a href="#">gallery</a></li>
+                    @if( isset($menus) )
+
+                        @foreach($menus as $menu)
+
+                                <li class="{{ Route::current()->uri() == $menu->href ? 'active': '' }}"><a href="{{ $menu->href }}">{{ $menu->title }}</a></li>
+
+                        @endforeach
+                            @if(!Auth::check())
+                                <li class="{{ Route::current()->uri() == "login" ? 'active': '' }}"><a href="{{ route('login') }}">Login</a></li>
+                            @elseif(Auth::check() && Route::current()->uri() !== "dashboard")
+                                <li class="{{ Route::current()->uri() == "login" ? 'active': '' }}"><a href="{{ route('user_profile') }}">Profile</a></li>
+                            @endif
+
+                    @endif
                 </ul>
             </div>
             <div id="HeadBtnArea" class="col-lg-3 col-8">
