@@ -31,7 +31,7 @@ Route::prefix('/admin')->middleware(['web', 'auth', 'can:admin-panel'])->namespa
         return view('Admin.index');
     })->name('dashboard');
 
-    Route::get("/foods", [FoodsController::class, 'index'])->middleware('can:foods-create', 'can:foods-index')->name('foods-index');
+    Route::get("/foods", [FoodsController::class, 'index'])->middleware('can:food-create', 'can:foods-index')->name('foods-index');
     Route::get("/foods/create", [FoodsController::class, 'create'])->name("food-create")->middleware('can:foods-create');
     Route::post('/foods/create', [FoodsController::class, 'store'])->name('food-store')->middleware('can:foods-create');
     Route::get('/foods/update/{food}', [FoodsController::class, 'show'])->name('food-show')->middleware('can:foods-edit');
