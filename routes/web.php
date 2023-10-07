@@ -34,8 +34,8 @@ Route::prefix('/admin')->middleware(['web', 'auth', 'can:admin-panel'])->namespa
     Route::get("/foods", [FoodsController::class, 'index'])->middleware('can:foods-create', 'can:foods-list')->name('foods-index');
     Route::get("/foods/create", [FoodsController::class, 'create'])->name("food-create")->middleware('can:foods-create');
     Route::post('/foods/create', [FoodsController::class, 'store'])->name('food-store')->middleware('can:foods-create');
-    Route::get('/foods/update/{food}', [FoodsController::class, 'show'])->name('food-show')->middleware('can:foods-edit');
-    Route::patch('/foods/update/{food}', [FoodsController::class, 'update'])->name('food-update')->middleware('can:foods-edit');
+    Route::get('/foods/update/{food}', [FoodsController::class, 'show'])->name('food-show')->middleware('can:foods-update');
+    Route::patch('/foods/update/{food}', [FoodsController::class, 'update'])->name('food-update')->middleware('can:foods-update');
     Route::get('/foods/delete/{food}', [FoodsController::class, 'destroy'])->name('food-destroy')->middleware('can:foods-destroy');
 
     Route::get('/foods_type', [FoodsTypeController::class, 'index'])->name('foods_type');
