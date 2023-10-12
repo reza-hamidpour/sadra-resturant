@@ -86,10 +86,44 @@
                         <small class="text text-danger">{{ $message }}</small>
                         @enderror
                         <script type="text/javascript">  $('#lfm').filemanager('image'); </script>
+
+                        <div class="row" id="wrapper-options">
+                            <button id="add_new_option" href="options" class="btn btn-primary mb-3">Add Option</button>
+                            <div class="foods-options col-12 mb-5" data-option="temp-option" style="display:none;">
+                                <div class="option_title mt-10">
+                                    <label for="option_title_label" class="form-label">Enter your Option Title</label>
+                                    <input type="text" data-option="option_title" id="option_title_0" class="form-control mb-3 col-10" name="option_title[0]" placeholder="Enter Option Title" data-groupname="option_0">
+                                    <button id="add_option_options" class="btn btn-success col-0" href="option_options" data-groupname="option_0">
+                                        <i class="fa fa-plus" data-optionname="temp-option"></i>
+                                    </button>
+                                </div>
+                                <div class="option_options mt-2" data-optionparent="temp-option">
+                                    <div class="row">
+                                        <input type="text" name="option_name[0][]" class="form-control col-4" data-optionoption="option_0" data-optiontype="name" placeholder="Option Name">
+                                        <input type="text" name="option_value[0][]" class="form-control col-4" data-optionoption="option_0" data-optiontype="value" placeholder="Option Value">
+                                        <input type="text" name="option_price[0][]" class="form-control col-3" data-optionoption="option_0" data-optiontype="price" placeholder="Option Price">
+                                        <span class="col-1">
+                                            <i class="fa fa-trash"></i>
+                                        </span>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <input type="text" name="option_name_1[]" class="form-control col-4" data-optionoption="option_0" data-optiontype="name" placeholder="Option Name">
+                                        <input type="text" name="option_value_1[]" class="form-control col-4" data-optionoption="option_0" data-optiontype="value" placeholder="Option Value">
+                                        <input type="text" name="option_price_1[]" class="form-control col-3" data-optionoption="option_0" data-optiontype="price" placeholder="Option Price">
+                                        <span class="col-1 hover:bg-red-600">
+                                            <i class="fa fa-trash"></i>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="submit" class="btn btn-primary mr-2" value="Submit"/>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="{{ asset('Admin/assets/js/admin-foods.js') }}"></script>
 @endsection

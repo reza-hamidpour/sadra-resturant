@@ -72,9 +72,6 @@ jQuery(document).ready(function(){
         jQuery("#" + remove_item ).remove();
     });
 
-
-
-
 });
 
 

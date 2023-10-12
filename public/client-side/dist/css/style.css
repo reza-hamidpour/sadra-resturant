@@ -81,7 +81,7 @@ body{
 	transition: 0.2s  ease-in-out;
 }
 .MobileNavBtn{
-	display: none;	
+	display: none;
 }
 .CartBtn{
 	position: relative;
@@ -1262,7 +1262,7 @@ footer::after{
 	transition: 0.2s;
 	font-weight: 300;
 	margin-bottom: 5px;
-	font-size: 15px; 
+	font-size: 15px;
 }
 .my-account-side ul li a svg{
 	margin-right: 10px;
@@ -1380,7 +1380,7 @@ input:focus , textarea:focus {
 	transform: rotate(180deg);
 	transition: 0.2s;
 }
-#my-account-mobile-menu.active , 
+#my-account-mobile-menu.active ,
 #my-account-mobile-menu:hover {
 	background-color: var(--pr-color);
 	color: #000;
@@ -1728,4 +1728,13 @@ input:focus , textarea:focus {
 		margin-bottom: 0;
 		padding: 15px 0;
 	}
+}
+
+/** updated by RH **/
+.menu-products .active{
+    display:flex;
+}
+
+.menu-products .hidden{
+    display:none;
 }

@@ -22,6 +22,11 @@ class Foods extends Model
         return $this->belongsToMany(Foods_type::class, 'foods_food_type', 'foods_id', 'food_types_id');
     }
 
+    public function food_options()
+    {
+        return $this->belongsToMany(Foods_options::class, 'foods_options', 'food_id', 'id');
+    }
+
     public function getRateRatio(): int
     {
         return 0;
@@ -58,6 +63,14 @@ class Foods extends Model
             $ids[] = $food_type->id;
         }
         return $ids;
+    }
+
+    public function getThumbnail(){
+        if($this->pic_url == "" ){
+            return '';
+        }else{
+            return $this->pic_url;
+        }
     }
 
 }

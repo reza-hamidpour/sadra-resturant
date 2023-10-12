@@ -37,7 +37,7 @@
                                 <td class="overflow-td">{{ $food->title }}</td>
                                 <td>{{ $food->price }}CAD</td>
                                 <td>{{ $food->getRateRatio() }}</td>
-                                <td>{{ $food->getThumbnail }}</td>
+                                <td><img src="{{ $food->getThumbnail() }}" alt="{{ $food->id }}" style="width: 50px; height: 50px;"></td>
                                 <td>{{ $food->getAgeStatus() }}</td>
                                 <td>{{ $food->getTotalOrder() }}</td>
                                 <td>{{ $food->getStatus() }}

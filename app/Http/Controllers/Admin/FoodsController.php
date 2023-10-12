@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Foods;
+use App\Models\Foods_options;
 use App\Models\Foods_type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -34,8 +35,32 @@ class FoodsController extends Controller
             "need_age_check" => [Rule::in([0,1, true, false])],
             "order" => "integer",
             "draft" => "bool",
-            "food_types*" => ['required', 'array:ids', Rule::in($types)]
+            "food_types*" => ['required', 'array:ids', Rule::in($types)],
+            "option_title*" => 'string|nullable',
+            "option_name*" => 'string|nullable',
+            "option_value*" => 'string|nullable',
+            "option_price*" => 'string|nullable',
         ];
+
+
+
+
+
+
+        $options_options = [];
+        foreach($request->option_title as $index=>$option){
+            if($option !== null ) {
+//                dd($request->option_name[$index]);
+                foreach($request->option_name[$index] as $index_options => $name){
+                    $options_options[$option][] = [
+                        'option_name' => $name,
+                        'option_value' => $request->option_value[$index][$index_options],
+                        'price' => $request->option_price[$index][$index_options],
+                    ];
+                }
+            }
+
+        }
         $request->validate($validate);
         $food = new Foods();
         $food->title = $request->title;
@@ -54,6 +79,13 @@ class FoodsController extends Controller
         if( $food instanceof Foods){
 
             $food->food_types()->attach($type_ids);
+            foreach($options_options as $index=>$option){
+                $food_options = new Foods_options();
+                $food_options->food_id = $food->id;
+                $food_options->option_title = $index;
+                $food_options->save();
+                $food_options->options()->attach($option);
+            }
             return redirect('/admin/foods/')->with('notify', ['msg'=>"Food Successfully added", "status" => "success"]);
         }
         return view("Admin.pages.Foods.create")->with('notify', ["msg" => "Something went wrong, please try again", "status" => "danger"]);

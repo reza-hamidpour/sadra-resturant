@@ -13,7 +13,7 @@ class Foods_type extends Model
 
     public function foods(){
         return $this->belongsToMany(Foods::class, 'foods_food_type',
-                              'food_types_id', 'food_id');
+                              'food_types_id', 'foods_id');
     }
 
 }
