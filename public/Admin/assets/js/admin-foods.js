@@ -15,6 +15,7 @@ jQuery(document).ready(function(){
             pre += 1;
         })
         // Reparing options title
+        pre = 0;
         jQuery('input[type=text][data-option=option_title]').each(function () {
             $(this).attr('name', 'option_title[' + pre + ']');
             $(this).attr('id', 'option_title-' + pre);

@@ -42,19 +42,17 @@ class FoodsController extends Controller
             "option_price*" => 'string|nullable',
         ];
 
-
-
-
-
-
         $options_options = [];
         foreach($request->option_title as $index=>$option){
             if($option !== null ) {
                 foreach($request->option_value[$index] as $index_options => $value){
-                    $options_options[$option][] = new Foods_options_options([
-                        'option_value' => $value,
-                        'price' => $request->option_price[$index][$index_options],
-                    ]);
+                    if($value !== "")
+                    {
+                        $options_options[$option][] = new Foods_options_options([
+                            'option_value' => $value,
+                            'price' => $request->option_price[$index][$index_options],
+                        ]);
+                    }
                 }
             }
         }
@@ -120,10 +118,12 @@ class FoodsController extends Controller
         foreach($request->option_title as $index=>$option){
             if($option !== null ) {
                 foreach($request->option_value[$index] as $index_options => $value){
-                    $options_options[$option][] = new Foods_options_options([
-                        'option_value' => $value,
-                        'price' => $request->option_price[$index][$index_options],
-                    ]);
+                    if($value !== "" && !is_null($value)){
+                        $options_options[$option][] = new Foods_options_options([
+                            'option_value' => $value,
+                            'price' => $request->option_price[$index][$index_options],
+                        ]);
+                    }
                 }
             }
         }
