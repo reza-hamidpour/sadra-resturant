@@ -16,7 +16,7 @@ class Foods_options extends Model
 
 
     public function options(){
-        return $this->belongsToMany(Foods_options_options::class, 'foods_options_options', 'option_id', 'id');
+        return $this->hasMany(Foods_options_options::class, 'option_id', 'id');
     }
 
 }

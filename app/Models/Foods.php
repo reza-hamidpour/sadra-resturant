@@ -24,7 +24,7 @@ class Foods extends Model
 
     public function food_options()
     {
-        return $this->belongsToMany(Foods_options::class, 'foods_options', 'food_id', 'id');
+        return $this->hasMany(Foods_options::class, 'food_id', 'id');
     }
 
     public function getRateRatio(): int
