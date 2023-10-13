@@ -140,8 +140,9 @@
                                             </button>
                                         </div>
                                         <div class="option_options mt-2" data-optionparent="option-{{ $loop->index }}">
-                                            <div class="row">
+
                                                 @foreach($options->options()->get() as $option)
+                                                    <div class="row">
                                                         <input type="text" name="option_value[{{ $loop->parent->index }}][{{ $loop->index }}]"
                                                                class="form-control col-4" data-optionoption="option_{{ $loop->parent->index }}"
                                                                data-optiontype="value" placeholder="Option Value"
@@ -153,8 +154,9 @@
                                                         <span class="col-1" data-option="option-{{ $loop->parent->index }}" data-optionoption="{{ $loop->index }}">
                                                         <i class="fa fa-trash"></i>
                                                         </span>
+                                                    </div>
                                                 @endforeach
-                                            </div>
+
                                         </div>
                                     </div>
                                 @endforeach
