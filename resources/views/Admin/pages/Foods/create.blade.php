@@ -99,7 +99,6 @@
                                 </div>
                                 <div class="option_options mt-2" data-optionparent="temp-option">
                                     <div class="row">
-                                        <input type="text" name="option_name[0][]" class="form-control col-4" data-optionoption="option_0" data-optiontype="name" placeholder="Option Name">
                                         <input type="text" name="option_value[0][]" class="form-control col-4" data-optionoption="option_0" data-optiontype="value" placeholder="Option Value">
                                         <input type="text" name="option_price[0][]" class="form-control col-3" data-optionoption="option_0" data-optiontype="price" placeholder="Option Price">
                                         <span class="col-1">
@@ -107,7 +106,6 @@
                                         </span>
                                     </div>
                                     <div class="row mt-2">
-                                        <input type="text" name="option_name_1[]" class="form-control col-4" data-optionoption="option_0" data-optiontype="name" placeholder="Option Name">
                                         <input type="text" name="option_value_1[]" class="form-control col-4" data-optionoption="option_0" data-optiontype="value" placeholder="Option Value">
                                         <input type="text" name="option_price_1[]" class="form-control col-3" data-optionoption="option_0" data-optiontype="price" placeholder="Option Price">
                                         <span class="col-1 hover:bg-red-600">

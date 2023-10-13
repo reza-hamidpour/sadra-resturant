@@ -37,7 +37,6 @@ class FoodsController extends Controller
             "draft" => "bool",
             "food_types*" => ['required', 'array:ids', Rule::in($types)],
             "option_title*" => 'string|nullable',
-            "option_name*" => 'string|nullable',
             "option_value*" => 'string|nullable',
             "option_price*" => 'string|nullable',
         ];
@@ -50,11 +49,9 @@ class FoodsController extends Controller
         $options_options = [];
         foreach($request->option_title as $index=>$option){
             if($option !== null ) {
-//                dd($request->option_name[$index]);
-                foreach($request->option_name[$index] as $index_options => $name){
+                foreach($request->option_value[$index] as $index_options => $value){
                     $options_options[$option][] = [
-                        'option_name' => $name,
-                        'option_value' => $request->option_value[$index][$index_options],
+                        'option_value' => $value,
                         'price' => $request->option_price[$index][$index_options],
                     ];
                 }
