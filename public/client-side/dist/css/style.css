@@ -1049,7 +1049,7 @@ footer::after{
 	background-color: #000;
 	transition: 0.2s;
 }
-#FoodOpttions .modal-footer #add-to-cart-btn{
+.modal .modal-footer .add-to-cart-btn, #FoodOpttions .modal-footer .add-to-cart-btn{
 	padding: 20px;
 	background-color: var(--pr-color);
 	font-weight: bold;
@@ -1058,11 +1058,11 @@ footer::after{
 	border: 0;
 	width: calc(100% - 220px);
 }
-#FoodOpttions .modal-footer #add-to-cart-btn:hover{
+.modal .modal-footer .add-to-cart-btn, #FoodOpttions .modal-footer .add-to-cart-btn:hover{
 	background-color: var(--pr-color-hover);
 	transition: 0.2s;
 }
-#FoodOpttions .modal-header{
+#modal .modal-header, #FoodOpttions .modal-header{
 	text-transform: uppercase;
 }
 .modal-details-products img{
