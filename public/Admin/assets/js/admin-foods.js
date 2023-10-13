@@ -1,5 +1,8 @@
 jQuery(document).ready(function(){
+    // ************ Add new option for foods. ********** /
+
     jQuery(document).on('click',"#add_new_option", function(e) {
+
         e.preventDefault(); // Prevent default behaviour of buttons
         // Copy our element and appending to its parent.
         var new_pic = $('.foods-options[data-option=temp-option]').clone(true);
@@ -7,7 +10,7 @@ jQuery(document).ready(function(){
         new_pic.slideDown();
 
         var pre = 0;
-        $('div.data-option').each(function () {
+        $('div.foods-options[data-option]').each(function () {
             $(this).attr('data-option', 'option-' + pre);
             pre += 1;
         })
@@ -63,15 +66,65 @@ jQuery(document).ready(function(){
                 $(this).attr('data-optionoption', 'option_' + optionParent_id );
             });
         }
-        jQuery(document).on('click', 'button.add_option_options', function(e){
-            e.preventDefault();
-            let target = $(this).attr('data-target');
-            let new_row = $('div.option_options[data-optionparent=temp-option] div.row:first-child').clone(true);
-            $('div.option_options[data-optionparent=' + target + ']').append(new_row);
-            new_row.appendTo('#wrapper-options');
-            new_row.slideDown(200);
+
+    });
+
+// ************ End new option for foods. ********** /
+
+    // ================================================
+
+    // *********** Add new row to options ****** /
+    jQuery(document).on('click', 'button.add_option_options', function(e){
+        e.preventDefault();
+        let target = $(this).attr('data-target');
+        let new_row = $("div[data-optionparent] div.row:first-child").first().clone(true);
+        new_row.appendTo('div.option_options[data-optionparent=' + target + ']').addClass('mt-2');
+        // $(').append(new_row);
+        var pre = 0;
+        $("div[data-optionparent=" + target + "] div.row input[data-optiontype=value]").each(function(){
+            $(this).attr('name', "option_value[" + target.split('-')[1] + "][" + pre + "]" );
+            $(this).attr('data-optionoption', target );
+            pre += 1;
+        });
+        pre = 0;
+        $("div[data-optionparent=" + target + "] div.row input[data-optiontype=price]").each(function(){
+            $(this).attr('name', "option_price[" + target.split('-')[1] + "][" + pre + "]" );
+            $(this).attr('data-optionoption', target );
+            pre += 1;
+        });
+        pre = 0;
+        $("div[data-optionparent=" + target + "] div.row span[data-optionoption]").each(function(){
+            $(this).attr('data-optionoption', pre );
+            $(this).attr('data-option', target );
+            pre += 1;
         });
     });
+    // ************ End new row to options *********/
+    // ******* Remove option rows ********/
+    $('span[data-optionoption]').on('click', function(e){
+        e.preventDefault();
+        var target = $(this).attr('data-option');
+        $(this).parent().slideUp(200).remove();
+        var pre = 0;
+        $("div[data-optionparent=" + target + "] div.row input[data-optiontype=value]").each(function(){
+            $(this).attr('name', "option_value[" + target.split('-')[1] + "][" + pre + "]" );
+            $(this).attr('data-optionoption', target );
+            pre += 1;
+        });
+        pre = 0;
+        $("div[data-optionparent=" + target + "] div.row input[data-optiontype=price]").each(function(){
+            $(this).attr('name', "option_price[" + target.split('-')[1] + "][" + pre + "]" );
+            $(this).attr('data-optionoption', target );
+            pre += 1;
+        });
+        pre = 0;
+        $("div[data-optionparent=" + target + "] div.row span[data-optionoption]").each(function(){
+            $(this).attr('data-optionoption', pre );
+            $(this).attr('data-option', target );
+            pre += 1;
+        });
+    });
+    // ******** End remove option rows. ******* /
 
 });
 
