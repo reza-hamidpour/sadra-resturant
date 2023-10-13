@@ -95,7 +95,6 @@ class FoodsController extends Controller
 
         $food_types = Foods_type::all();
         $food_types_ids = $food->getFoodTypesIds();
-
 //        dd($food_types_ids);
 
         return view('Admin.pages.Foods.edit', compact('food', 'food_types', 'food_types_ids'));
