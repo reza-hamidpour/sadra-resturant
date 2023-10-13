@@ -14,7 +14,6 @@ class FoodsOptionsOptions extends Migration
     public function up()
     {
         Schema::create('foods_options_options', function(Blueprint $table){
-            $table->id();
             $table->unsignedBigInteger('option_id');
             $table->foreign('option_id')->references('id')->on('foods_options')->onDelete('cascade');
             $table->string('option_value');
