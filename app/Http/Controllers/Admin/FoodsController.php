@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Foods;
 use App\Models\Foods_options;
+use App\Models\Foods_options_options;
 use App\Models\Foods_type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -50,13 +51,12 @@ class FoodsController extends Controller
         foreach($request->option_title as $index=>$option){
             if($option !== null ) {
                 foreach($request->option_value[$index] as $index_options => $value){
-                    $options_options[$option][] = [
+                    $options_options[$option][] = new Foods_options_options([
                         'option_value' => $value,
                         'price' => $request->option_price[$index][$index_options],
-                    ];
+                    ]);
                 }
             }
-
         }
         $request->validate($validate);
         $food = new Foods();
@@ -81,7 +81,7 @@ class FoodsController extends Controller
                 $food_options->food_id = $food->id;
                 $food_options->option_title = $index;
                 $food_options->save();
-                $food_options->options()->attach($option);
+                $food_options->options()->saveMany($option);
             }
             return redirect('/admin/foods/')->with('notify', ['msg'=>"Food Successfully added", "status" => "success"]);
         }
@@ -108,10 +108,25 @@ class FoodsController extends Controller
             "need_age_check" => [Rule::in(["on", null])],
             "pic_url" => "nullable",
             "draft" => "boolean",
-            "food_types*" => ['required', 'array:ids', Rule::in($food_types)]
+            "food_types*" => ['required', 'array:ids', Rule::in($food_types)],
+            "option_title*" => 'string|nullable',
+            "option_value*" => 'string|nullable',
+            "option_price*" => 'string|nullable',
         ];
 
         $request->validate($validate);
+
+        $options_options = [];
+        foreach($request->option_title as $index=>$option){
+            if($option !== null ) {
+                foreach($request->option_value[$index] as $index_options => $value){
+                    $options_options[$option][] = new Foods_options_options([
+                        'option_value' => $value,
+                        'price' => $request->option_price[$index][$index_options],
+                    ]);
+                }
+            }
+        }
 
         $data = [
             'title' => $request->title,
@@ -125,6 +140,15 @@ class FoodsController extends Controller
         try{
 
             $food->update($data);
+            $food->food_options()->delete();
+            foreach($options_options as $index=>$option){
+                $food_options = new Foods_options();
+                $food_options->food_id = $food->id;
+                $food_options->option_title = $index;
+                $food_options->save();
+                $food_options->options()->saveMany($option);
+            }
+
             if( $food instanceof Foods)
             {
                 $food->food_types()->sync($request->food_types);
