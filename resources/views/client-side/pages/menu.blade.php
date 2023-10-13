@@ -22,7 +22,7 @@
 
                         <div class="row {{ $loop->index == 0? 'active': 'hidden' }}" id="category-{{ $category->id }}"
                              data-items="category-{{ $category->id }}">
-                            @foreach($category->foods()->get() as $food)
+                            @foreach($category->foods()->where('draft', 1)->get() as $food)
                                 <div class="col-lg-6 col-12">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#FoodOpttions-{{ $food->id }}" class="menu-products-item-href">
                                         <div class="menu-products-item">
