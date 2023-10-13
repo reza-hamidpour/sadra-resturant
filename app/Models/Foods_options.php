@@ -9,6 +9,7 @@ class Foods_options extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
 
     public function foods(){
         return $this->belongsTo(Foods::class, 'food_id', 'id');
