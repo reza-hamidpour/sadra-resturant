@@ -17,7 +17,6 @@ class FoodsOptionsOptions extends Migration
             $table->id();
             $table->unsignedBigInteger('option_id');
             $table->foreign('option_id')->references('id')->on('foods_options')->onDelete('cascade');
-            $table->string("option_name");
             $table->string('option_value');
             $table->string('price')->default('0.0');
         });
