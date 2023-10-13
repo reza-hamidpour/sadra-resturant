@@ -62,43 +62,40 @@
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="container">
-                                                    <div class="row gx-1">
-                                                        <div class="col-lg-4 col-6 text-center">
-                                                            <button><img
-                                                                    src="{{ asset('client-side/dist/images/blog-1-700x456.jpg') }}"
-                                                                    class="img-fluid" alt=""></button>
-                                                        </div>
-                                                        <div class="col-lg-4 col-6 text-center">
-                                                            <button><img
-                                                                    src="{{ asset('client-side/dist/images/blog-1-700x456.jpg') }}"
-                                                                    class="img-fluid" alt=""></button>
-                                                        </div>
-                                                        <div class="col-lg-4 col-6 text-center">
-                                                            <button><img
-                                                                    src="{{ asset('client-side/dist/images/blog-1-700x456.jpg') }}"
-                                                                    class="img-fluid" alt=""></button>
-                                                        </div>
+                                                <div class="modal-details-products">
+                                                    <img src="{{ $food->getThumbnail() }}" class="img-fluid" alt="{{ $food->title }}">
+                                                        @foreach($food->food_options()->get() as $options)
+                                                                <div class="modal-details-products-text">
+                                                                    <p>{{ $options->option_title }}</p>
+                                                                </div>
+                                                                <div class="modal-details-products-selectopt">
+                                                                    @foreach($options->options()->get() as $option)
+                                                                        <button data-price="{{ $option->price }}">{{ $option->option_value }}</button>
+                                                                    @endforeach
+                                                                </div>
+                                                        @endforeach
+                                                    <div class="modal-details-products-form">
+                                                        <span>Please specify any allergies, food instructions, etc.</span>
+                                                        <textarea type="text" label="Please specify any allergies, food instructions, etc." placeholder="Allergies, Intolerances, Cooking Preferences, etc." maxlength="300" rows="3"></textarea>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="btn-qty">
-                                                <span class="btn-qty-btn">
-                                                    <button type="button" class="btn-number" data-type="minus" data-field="quant[2]">
-                                                      -
-                                                    </button>
-                                                </span>
-                                                    <input type="text" name="quant[2]"
-                                                           class="form-control input-number" value="1" min="1"
-                                                           max="100">
+                                                    <span class="btn-qty-btn">
+                                                        <button type="button" class="btn-number"  data-type="minus" data-field="quant[2]">
+                                                          -
+                                                        </button>
+                                                    </span>
+                                                    <input type="text" name="quant[2]" class="input-number" value="1" min="1" max="100">
                                                     <span class="btn-qty-btn">
                                                         <button type="button" class="btn-number" data-type="plus" data-field="quant[2]">
                                                             +
                                                         </button>
                                                     </span>
                                                 </div>
-                                                <button id="add-to-cart-btn">Add to Cart - {{ $food->price }}</button>
+                                                <button id="add-to-cart-btn" class="add-to-cart-btn">Add to Cart - ${{ $food->price }}</button>
                                             </div>
                                         </div>
                                     </div>
