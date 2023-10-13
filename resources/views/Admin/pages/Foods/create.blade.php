@@ -93,7 +93,7 @@
                                 <div class="option_title mt-10">
                                     <label for="option_title_label" class="form-label">Enter your Option Title</label>
                                     <input type="text" data-option="option_title" id="option_title_0" class="form-control mb-3 col-10" name="option_title[0]" placeholder="Enter Option Title" data-groupname="option_0">
-                                    <button id="add_option_options" class="btn btn-success col-0" href="option_options" data-groupname="option_0">
+                                    <button class="btn btn-success col-0 add_option_options" data-target="option-temp" data-groupname="option_0">
                                         <i class="fa fa-plus" data-optionname="temp-option"></i>
                                     </button>
                                 </div>
