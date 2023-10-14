@@ -70,13 +70,25 @@
                                                                 </div>
                                                                 <div class="modal-details-products-selectopt">
                                                                     @foreach($options->options()->get() as $option)
-                                                                        <button data-price="{{ $option->price }}">{{ $option->option_value }}</button>
+                                                                        <button data-price="{{ $option->price }}"
+                                                                                data-optionid="{{ $options->id }}"
+                                                                                data-optionvalue="{{ $option->option_value }}">
+                                                                            {{ $option->option_value }}</button>
                                                                     @endforeach
+                                                                    <input type="hidden" name="option-{{ $options->id }}" data-option="{{ $options->id }}"/>
                                                                 </div>
                                                         @endforeach
+                                                    @if($food->age_check)
+                                                        <div class="modal-details-products-form">
+                                                            <label for="age_check_{{ $food->id }}">
+                                                                Are you over the legal drinking age?
+                                                            </label>
+                                                            <input type="checkbox" id="age_check_{{ $food->id }}" data-checkbox="age_check">
+                                                        </div>
+                                                    @endif
                                                     <div class="modal-details-products-form">
                                                         <span>Please specify any allergies, food instructions, etc.</span>
-                                                        <textarea type="text" label="Please specify any allergies, food instructions, etc." placeholder="Allergies, Intolerances, Cooking Preferences, etc." maxlength="300" rows="3"></textarea>
+                                                        <textarea type="text" id="{{ $food->id }}-textarea" label="Please specify any allergies, food instructions, etc." placeholder="Allergies, Intolerances, Cooking Preferences, etc." maxlength="300" rows="3"></textarea>
                                                     </div>
                                                 </div>
 
@@ -84,18 +96,18 @@
                                             <div class="modal-footer">
                                                 <div class="btn-qty">
                                                     <span class="btn-qty-btn">
-                                                        <button type="button" class="btn-number"  data-type="minus" data-field="quant[2]">
+                                                        <button type="button" data-target="{{ $food->id }}" class="btn-number"  data-type="minus" data-field="quant[{{ $food->id }}]">
                                                           -
                                                         </button>
                                                     </span>
-                                                    <input type="text" name="quant[2]" class="input-number" value="1" min="1" max="100">
+                                                    <input type="text" name="quant[{{ $food->id }}]" data-target="{{ $food->id }}" class="input-number" value="1" min="1" max="100">
                                                     <span class="btn-qty-btn">
-                                                        <button type="button" class="btn-number" data-type="plus" data-field="quant[2]">
+                                                        <button type="button" class="btn-number" data-target="{{ $food->id }}" data-type="plus" data-field="quant[{{ $food->id }}]">
                                                             +
                                                         </button>
                                                     </span>
                                                 </div>
-                                                <button id="add-to-cart-btn" class="add-to-cart-btn">Add to Cart - ${{ $food->price }}</button>
+                                                <button id="add-to-cart-btn-{{ $food->id }}" class="add-to-cart-btn" data-price="{{ $food->price }}" data-foodid="{{ $food->id }}" >Add to Cart - $<span>{{ $food->price }}</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -109,4 +121,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="add_to_cart" value="{{ route('cart-add-item') }}">
+    <script type="text/javascript" src="{{ asset('client-side/dist/js/food-modal.js') }}"></script>
 @endsection

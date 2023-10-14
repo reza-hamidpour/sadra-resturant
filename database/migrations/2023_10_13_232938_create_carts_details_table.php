@@ -20,7 +20,7 @@ class CreateCartsDetailsTable extends Migration
             $table->unsignedBigInteger('food_id')->nullable();
             $table->foreign('food_id')->on('foods')->references('id')->onDelete('SET NULL');
             $table->string('food_options')->nullable();
-            $table->string('alergic_comment')->nullable();
+            $table->string('allergic_comment')->nullable();
             $table->boolean('age_check');
             $table->string('price');
             $table->mediumInteger('quantity')->default(1);
