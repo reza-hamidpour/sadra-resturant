@@ -18,6 +18,7 @@ class CreateDeskInformationsTable extends Migration
             $table->string('desk_name');
             $table->unsignedInteger('desk_size');
             $table->string('desk_description')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

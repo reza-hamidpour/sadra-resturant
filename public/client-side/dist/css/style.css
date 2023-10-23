@@ -1227,6 +1227,7 @@ footer::after{
     padding-right: 50px;
     background-color: #262626;
 }
+
 .modal-details-products-selectopt button:focus{
     background-color: var(--pr-color);
     color: #000;
@@ -1917,4 +1918,17 @@ input:focus , textarea:focus {
 
 .menu-products .hidden{
     display:none;
+}
+
+
+/** Updated by RH **/
+.active-option{
+    background-color: var(--pr-color) !important;
+    color: #000 !important;
+}
+.active-option::after{
+    content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z" fill="rgba(0,0,0,1)"></path></svg>') !important;
+    background-color: var(--pr-color-hover) !important;
+    transition: 0.2s !important;
+    border-color:transparent !important;
 }

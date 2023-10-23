@@ -67,7 +67,9 @@
                         <ul>
 
                             @foreach($categories as $category)
-                            <li class="{{ $loop->index == 0 ? 'active' : '' }}"><a href="category-{{ $category->id }}" data-toggle="category-{{ $category->id }}">{{ $category->type_title }}
+                            <li><a href="category-{{ $category->id }}"
+                                    data-toggle="category-{{ $category->id }}"
+                                    class="{{ $loop->index == 0 ? 'active' : '' }}">{{ $category->type_title }}
                                     <span>
 										<svg fill="currentColor" height="24" width="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                              viewBox="0 0 512 512" xml:space="preserve">
@@ -206,4 +208,5 @@
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="add_to_cart" value="{{ route('cart-add-item') }}">
     <script type="text/javascript" src="{{ asset('client-side/dist/js/food-modal.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client-side/dist/js/pickmeup.js') }}"></script>
 @endsection
