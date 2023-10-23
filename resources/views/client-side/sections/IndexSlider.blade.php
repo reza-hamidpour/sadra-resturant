@@ -5,7 +5,7 @@
         <p>Enjoy best dishes from the comfort of your home</p>
         <div class="IndexSliderContentButton">
             <a href="{{ route('reservation') }}">RESERVATIONS</a>
-            <a href="{{ route('menu') }}">ORDER NOW</a>
+            <a href="https://sadrarestaurant.order-online.ai/">ORDER NOW</a>
         </div>
         <div class="ArrowDownBtn">
             <div class="arrow">
