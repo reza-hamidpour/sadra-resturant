@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FoodsController;
 use App\Http\Controllers\Admin\FoodsTypeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Admin\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +60,21 @@ Route::prefix('/admin')->middleware(['web', 'auth', 'can:admin-panel'])->namespa
     Route::get('/links/{link}/edit', [\App\Http\Controllers\Admin\HeadMenuController::class, 'edit'])->name('links_edit');
     Route::put('/links/{link}/edit', [\App\Http\Controllers\Admin\HeadMenuController::class, 'update'])->name('links_update');
     Route::get('/links/{link}/delete', [\App\Http\Controllers\Admin\HeadMenuController::class, 'destroy'])->name('links_destroy');
+
+    Route::get('/users/roles', [RolesController::class, 'index'])->name('roles.index');
+    Route::get('/users/roles/{role}/edit', [RolesController::class, 'show'])->name('roles.edit');
+    Route::patch('/users/roles/{role}/edit', [RolesController::class, 'update'])->name('roles.update');
+    Route::get('/users/roles/create', [RolesController::class, 'create'])->name('roles.create');
+    Route::post('/users/roles/create', [RolesController::class, 'store'])->name('roles.store');
+    Route::get('/users/roles/{role}/delete', [RolesController::class, 'destroy'])->name('roles.destroy');
+
+    Route::get('/users', [UsersController::class, 'index'])->name('users.index')->middleware(['can:permission-list', 'can:permission-update', 'can:permission-create', 'can:permission-destroy']);
+    Route::get('/users/{user}/edit', [UsersController::class, 'show'])->name('users.edit')->middleware(['can:permission-update']);
+    Route::patch('/users/{user}/edit', [UsersController::class, 'update'])->name('users.update')->middleware(['can:permission-update']);
+    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create')->middleware(['can:permission-create']);
+    Route::post('/users/create', [UsersController::class, 'store'])->name('users.store')->middleware(['can:permission-create']);
+    Route::delete('/users/{user}/delete', [UsersController::class, 'destroy'])->name('users.destroy')->middleware(['can:permission-destroy']);
+
 
 });
 

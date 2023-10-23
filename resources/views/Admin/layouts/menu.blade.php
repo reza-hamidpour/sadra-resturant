@@ -47,7 +47,7 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item {{ (in_array(Route::currentRouteName(), ['links_index', 'links_create', 'links_edit'])) ? 'active' : '' }}">
+        <li class="nav-item">
             <a href="#links" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="links">
                 <span class="icon-bg"><i class="mdi mdi-image menu-icon"></i></span>
                 <span class="menu-title">Links</span>
@@ -55,11 +55,44 @@
             </a>
             <div class="collapse" id="links">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item {{ Route::currentRouteName() == 'links_create'? 'active' : '' }}">
+                    <li class="nav-item {{ Route::currentRouteName() === 'links_create'? 'active' : '' }}">
                         <a href="{{ route('links_create') }}" class="nav-link">Create</a>
                     </li>
-                    <li class="nav-item {{ Route::currentRouteName() == 'links_index' ? 'active' : '' }}">
+                    <li class="nav-item {{ Route::currentRouteName() === 'links_index' ? 'active' : '' }}">
                         <a href="{{ route('links_index') }}" class="nav-link">View All</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="#users" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="users">
+                <span class="icon-bg"></span>
+                <span class="menu-title">Users</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="users">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a href="{{ route('users.create') }}" class="nav-link">Create User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('users.index')  }}" class="nav-link">View All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#roles" class="nav-link" data-toggle="collapse" aria-expanded="false"
+                           aria-controls="roles">
+                            <span class="icon-bg"></span>
+                            <span class="menu-title">Roles</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="roles">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('roles.create') }}" class="nav-link">Create Role</a>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('roles.index') }}" class="nav-link">View All</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
