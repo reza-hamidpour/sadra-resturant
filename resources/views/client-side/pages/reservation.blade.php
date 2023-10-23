@@ -1,6 +1,6 @@
 @extends('client-side.layouts.base')
 @section('content')
-    @include('client-side.layouts.pages-slider')
+    <script src="{{ asset('client-side/dist/js/pickmeup.js') }}"></script>
 <div class="reservations">
     <div class="container">
         <div class="row">
