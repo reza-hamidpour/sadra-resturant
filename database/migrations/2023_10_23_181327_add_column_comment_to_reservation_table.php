@@ -13,8 +13,9 @@ class AddColumnCommentToReservationTable extends Migration
      */
     public function up()
     {
-        Schema::table('reservation', function (Blueprint $table) {
+        Schema::table('reservations', function (Blueprint $table) {
             $table->string('comment')->nullable();
+            $table->smallInteger('reservation_status')->default(0)->change();
         });
     }
 
@@ -25,7 +26,7 @@ class AddColumnCommentToReservationTable extends Migration
      */
     public function down()
     {
-        Schema::table('reservation', function (Blueprint $table) {
+        Schema::table('reservations', function (Blueprint $table) {
             $table->removeColumn('comment');
         });
     }

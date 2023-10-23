@@ -16,14 +16,14 @@ class ReservationController extends Controller
 
 
     public function reservation(Request $request){
-        $desk_information_ids = DeskInformation::where('status', 1)->pluck('id')->get();
+        $desk_information_ids = DeskInformation::where('status', 1)->get()->pluck('id')->toArray();
         $validation = [
             'name' => 'required|string',
             'phone_number' => 'required|string',
             'reservation_date' => 'required|string',
             'reservation_from' => 'required|string',
             'reservation_to' => 'required|string',
-            'desk_information' => ['required', 'array:ids', Rule::in($desk_information_ids)],
+            'desk_information' => ['required', Rule::in($desk_information_ids)],
             'comment' => 'nullable|string',
         ];
 
@@ -36,6 +36,7 @@ class ReservationController extends Controller
         $reservation->reserve_date = $request->reservation_date;
         $reservation->from = $request->reservation_from;
         $reservation->to = $request->reservation_to;
+        $reservation->party_size = $request->party_size;
         $request->desk_number = $request->desk_information;
         $request->reservation_status = 0;
 
@@ -48,10 +49,12 @@ class ReservationController extends Controller
                'msg' => 'Your request has successfully reserved, see you on ' . $request->reservation_date . ' at ' . $request->reservation_from,
             ]);
         }catch(\Exception $e){
+
             return response()->json([
                'status_code' => 200,
                'status' => 'danger',
-               'msg' => 'You request did not set at this time, please contact with our Customer service.',
+                'msg' => $e,
+//               'msg' => 'You request did not set at this time, please contact with our Customer service.',
             ]);
         }
     }

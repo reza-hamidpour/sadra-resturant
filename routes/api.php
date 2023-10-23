@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/cart/add', [FoodsBasketController::class, 'add_item'])->name('cart-add-item');
 Route::post('/cart/remove', [FoodsBasketController::class, 'remove_item'])->name('cart-remove-item');
 Route::get('/cart/', [FoodsBasketController::class, 'current_basket'])->name('cart-current');
+Route::post('/reservation/book', [\App\Http\Controllers\ReservationController::class, 'reservation'])->name('book_appointment');

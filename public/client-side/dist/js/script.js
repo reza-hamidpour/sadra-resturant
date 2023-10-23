@@ -205,19 +205,6 @@ $(document).ready(function() {
         $('#' + target).addClass('active').slideDown(200).addClass('active');
     });
 
-    $('button[data-deskid]').click(function(e){
-       e.preventDefault();
-       $('button[data-deskid]').removeClass('active-option');
-       $(this).addClass('active-option');
-       $('input[name=desk_information]').val($(this).attr('data-deskid'));
-       let limitation = $(this).attr('data-desksize');
-       let start = 0;
-       let new_options = "<option value='null'>Party Size</option>";
-       for(let i = 1; i<= limitation; i++){
-           new_options += "<option value='" + i  + "'>" + i + "</option>";
-       }
-       $("select[id=party_size]").html(new_options);
-    });
 });
 
 

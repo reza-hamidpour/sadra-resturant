@@ -17,12 +17,18 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H18C18 18.6863 15.3137 16 12 16C8.68629 16 6 18.6863 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z" fill="currentColor"></path></svg>
                                         </span>
                                 <input type="text" name="name" placeholder="Your Name">
+                                @error('name')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3  col-lg-6">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.42V19.9561C21 20.4811 20.5941 20.9167 20.0705 20.9537C19.6331 20.9846 19.2763 21 19 21C10.1634 21 3 13.8366 3 5C3 4.72371 3.01545 4.36687 3.04635 3.9295C3.08337 3.40588 3.51894 3 4.04386 3H7.5801C7.83678 3 8.05176 3.19442 8.07753 3.4498C8.10067 3.67907 8.12218 3.86314 8.14207 4.00202C8.34435 5.41472 8.75753 6.75936 9.3487 8.00303C9.44359 8.20265 9.38171 8.44159 9.20185 8.57006L7.04355 10.1118C8.35752 13.1811 10.8189 15.6425 13.8882 16.9565L15.4271 14.8019C15.5572 14.6199 15.799 14.5573 16.001 14.6532C17.2446 15.2439 18.5891 15.6566 20.0016 15.8584C20.1396 15.8782 20.3225 15.8995 20.5502 15.9225C20.8056 15.9483 21 16.1633 21 16.42Z" fill="currentColor"></path></svg>
                                         </span>
                                 <input type="text" name="phone_number" placeholder="Phone Number">
+                                @error('phone_number')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3  col-lg-6">
                                         <span>
@@ -33,6 +39,9 @@
                                     https://www.jqueryscript.net/time-clock/Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp.html
                                     Document Datepicker khasti chizi kamo ziyad koni :)
                                 -->
+                                @error('reservation_date')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3  col-lg-6">
                                         <span>
@@ -44,6 +53,9 @@
                                         <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
+                                @error('reservation_from')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3  col-lg-6">
                                         <span>
@@ -55,6 +67,9 @@
                                         <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
+                                @error('reservation_to')
+                                    <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3 col-lg-12">
                                 <div class="modal-details-products-text">
@@ -68,6 +83,9 @@
                                     @endforeach
                                     <input type="hidden" name="desk_information" value="">
                                 </div>
+                                @error('desk_information')
+                                <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mb-3  col-lg-12">
                                         <span>
@@ -79,17 +97,15 @@
                                     <option value="">4</option>
                                     <option value="">6</option>
                                 </select>
+                                @error('party_size')
+                                    <span class="alert alert-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="FrmGp mt-4 col-lg-12">
-                                <div class="modal-details-products-text">
-                                    <p>Mention any comments</p>
-                                </div>
-                                <div class="">
-                                    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-                                </div>
+                                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Mention any coments"></textarea>
                             </div>
                             <div class="FrmGp mt-4 col-lg-12 text-center">
-                                <input type="hidden" name="reservation_url" value="{{ route('reservation') }}" disabled>
+                                <input type="hidden" name="reservation_url" value="{{ route('book_appointment') }}" disabled>
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" disabled>
                                 <button id="set_reservation">
                                     Reserve
@@ -106,4 +122,5 @@
         </div>
     </div>
 </div>
+    <script type="text/javascript" src="{{ asset('client-side/dist/js/reservation.js') }}"></script>
 @endsection
