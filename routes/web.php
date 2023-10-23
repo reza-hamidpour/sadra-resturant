@@ -81,6 +81,7 @@ Route::prefix('/admin')->middleware(['web', 'auth', 'can:admin-panel'])->namespa
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery-archive');
 Route::get('/gallery/{gallery}', [GalleryController::class, 'single'])->name('gallery-single');
+Route::get('/reservation', [\App\Http\Controllers\ReservationController::class, 'index'])->name('reservation');
 
 Route::get("/dashboard", [\App\Http\Controllers\UserProfileControler::class, 'index'])->name('user_profile');
 Route::patch('/dashboard', [\App\Http\Controllers\UserProfileControler::class, 'info_update'])->name('user_information_update');
